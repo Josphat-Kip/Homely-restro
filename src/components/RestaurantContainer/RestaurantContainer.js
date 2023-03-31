@@ -1,0 +1,41 @@
+import React, { useContext } from "react";
+import { RestaurantContext } from "../RestaurantContext";
+import RestaurantCard from "./RestaurantCard";
+import "./RestaurantContainer.css";
+
+function RestaurantContainer() {
+  const { loading, restraurantsError, restaurants } =
+    useContext(RestaurantContext);
+
+  const restaurantList = restaurants.map((restaurant) => (
+    <RestaurantCard
+      key={restaurant.id}
+      restaurantName={restaurant.name}
+      restaurantAddress={restaurant.address}
+      restaurantRating={restaurant.rating}
+      restaurantLike={restaurant.like}
+      restaurantImage={restaurant.image_url}
+      restaurant={restaurant}
+    />
+  ));
+  return (
+    <div className="restaurant-container">
+       {/* <h2>Popular Restaurants</h2>  */}
+      {restraurantsError?.length > 0
+        ? restraurantsError.map((error) => (
+            <span className="error-message" key={error}>
+              {error}
+            </span>
+          ))
+        : null}
+      {loading ? <h2>Loading...</h2> : restaurantList}
+    </div>
+  );
+}
+
+export default RestaurantContainer;
+
+
+
+//It imports the necessary components from React and the RestaurantContext, 
+// and renders an array of RestaurantCards based on the restaurants in the context
