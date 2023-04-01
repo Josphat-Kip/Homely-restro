@@ -30,9 +30,9 @@ export default function LoginForm() {
                 <div className="col-8">
                   <h3 className="mb-0">Homely-Delicacies</h3>
                   <p className="text-muted mb-0">
-                  Your happy place is our happy place! Welcome to the best restaurant in town
-                   serving everything from burgers and ries 
-                   to pasta and pizza, and the hottest deserts.
+                    Your happy place is our happy place! Welcome to the best
+                    restaurant in town serving everything from burgers and ries
+                    to pasta and pizza, and the hottest deserts.
                   </p>
                 </div>
               </div>
@@ -68,7 +68,7 @@ export default function LoginForm() {
                   type="submit"
                   className="btn btn-primary btn-block mb-3"
                 >
-                  {"Login"}
+                  {isLoading ? " Loading..." : "Login"}{" "}
                 </button>
               </form>
               <div className="text-center">
