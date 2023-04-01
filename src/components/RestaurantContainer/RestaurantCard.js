@@ -29,7 +29,7 @@ function RestaurantCard({
     </div>
   );
 }
-// restaurantcard
+
 export default RestaurantCard;
 
 //This code snippet is a React component that renders a restaurant card.
