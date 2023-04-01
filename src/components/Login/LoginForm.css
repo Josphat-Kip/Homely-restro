@@ -6,6 +6,7 @@ login-div {
     padding: 20px 40px;
     height: 100vh;
     margin-bottom: 30px;
+    background-color: red;
   }
   
   .login-img {
