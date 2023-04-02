@@ -109,25 +109,24 @@ function RestaurantProvider({ children }) {
   const [signupLoading, setSignupLoading] = useState(false);
 
   function handleSignupChange(event) {
-    const name = event.target.name;
-    const value = event.target.value;
-    setSignupData({ ...signupData, [name]: value });
+    setSignupData({ ...signupData, [event.target.name]: event.target.value });
   }
+// console.log(signupData)
 
   async function handleSubmitSignupDetails(event) {
     event.preventDefault();
     setSignupLoading(true);
+    console.log(signupData)
     const response = await fetch("/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(signupData),
-    });
+     });
 
-    const userData = await response.json();
-    if (response.ok) {
+     const userData = await response.json();
+      if (response.ok === true) {
       setUser(userData);
       setOnLogin(true);
-      setSignupError([]);
       setSignupLoading(false);
       navigate("/");
       setSignupData({
@@ -135,11 +134,11 @@ function RestaurantProvider({ children }) {
         password: "",
         image_url: "",
         password_confirmation: "",
-      });
-    } else {
+     });
+     } else {
       setSignupError(userData.errors);
       setSignupLoading(false);
-    }
+     }
   }
   // end of sign up functionality
 
@@ -167,7 +166,7 @@ function RestaurantProvider({ children }) {
     event.preventDefault();
     setIsLoading(true);
     const response = await fetch("/login", {
-      withCredentials: true,
+      // withCredentials: true,
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginData),
