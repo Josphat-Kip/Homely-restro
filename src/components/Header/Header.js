@@ -58,4 +58,5 @@ export default function Header({ loggedUser }) {
 
 //This code renders a header component with a link to "Restaurants",
 //a search bar, a log in button, a sign up button, and a user profile button.
-// It also uses useContext to handle the log out click and useState to change the background color of the header when the user scrolls.
+// It also uses useContext to handle the log out click and useState to change the 
+//background color of the header when the user scrolls.
