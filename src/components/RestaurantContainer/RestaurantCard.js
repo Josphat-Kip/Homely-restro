@@ -32,9 +32,14 @@ function RestaurantCard({
 
 export default RestaurantCard;
 
-//This code snippet is a React component that renders a restaurant card.
+//This code is a React component that renders a restaurant card.
 //The card displays the restaurant name, address, rating, and image.
 //The handleRestaurant function from the RestaurantContext is used as an
 // onClick event handler to allow the user to click on the restaurant name and access more information.
 
-//The restaurant rating is also rendered as stars which are displayed
+//The restaurant rating is also rendered as stars which are displayed.
+
+
+//pendings to be implemented are:
+// 1. More information on restaurants i.e foods and their prices
+// 2. Users can rate the restaurant in a scale of 1-5 using stars
