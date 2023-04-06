@@ -36,6 +36,9 @@ function RestaurantProvider({ children }) {
   const localIdJson = localStorage.getItem("restaurantId");
   const localId = localIdJson ? JSON.parse(localIdJson) : [];
   const [restaurantId, setRestaurantId] = useState(localId);
+// useEffect()which is a React hook performs side effects in a function component. 
+//This line of code takes a callback function as its first argument. 
+//const payload=> declares a constant variable called payload, which is assigned an anonymous asynchronous function.
 
   useEffect(() => {
     const payload = async () => {
@@ -82,7 +85,8 @@ function RestaurantProvider({ children }) {
       `/restaurants/${restaurantId}/reviews/${reviewId}`,
       { method: "DELETE" }
     );
-
+    //logs the response and checks if response is okay
+    //if true, filters through reviews by removing review with specified ID
     console.log(response);
     if (response.ok) {
       setReviews((prevReviews) =>
@@ -111,20 +115,20 @@ function RestaurantProvider({ children }) {
   function handleSignupChange(event) {
     setSignupData({ ...signupData, [event.target.name]: event.target.value });
   }
-// console.log(signupData)
+  // console.log(signupData)
 
   async function handleSubmitSignupDetails(event) {
     event.preventDefault();
     setSignupLoading(true);
-    console.log(signupData)
+    console.log(signupData);
     const response = await fetch("/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(signupData),
-     });
+    });
 
-     const userData = await response.json();
-      if (response.ok === true) {
+    const userData = await response.json();
+    if (response.ok === true) {
       setUser(userData);
       setOnLogin(true);
       setSignupLoading(false);
@@ -134,11 +138,11 @@ function RestaurantProvider({ children }) {
         password: "",
         image_url: "",
         password_confirmation: "",
-     });
-     } else {
+      });
+    } else {
       setSignupError(userData.errors);
       setSignupLoading(false);
-     }
+    }
   }
   // end of sign up functionality
 
@@ -195,7 +199,7 @@ function RestaurantProvider({ children }) {
 
   // Logout functionality
   function handleLogoutClick() {
-    fetch("https://restro-api.onrender.com/logout", {
+    fetch("/logout", {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {
@@ -237,14 +241,11 @@ function RestaurantProvider({ children }) {
 
   async function handleSubmitReview(event) {
     event.preventDefault();
-    const response = await fetch(
-      `https://restro-api.onrender.com/restaurants/${restaurantId}/reviews`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newReview),
-      }
-    );
+    const response = await fetch(`/restaurants/${restaurantId}/reviews`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newReview),
+    });
     console.log(response);
     const review = await response.json();
     if (response.ok) {
