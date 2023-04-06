@@ -34,4 +34,5 @@ export default function RestaurantPage() {
 
 // This code imports the React and RestaurantContext components from the respective modules
 // and uses the useContext hook to pull data from the RestaurantContext.
-//Then it uses a ternary operator to check if an error exists and map it to the span element if it does. Finally, it renders the restaurant name, description, and image to the DOM.
+//Then it uses a ternary operator to check if an error exists and map it to the span element if it does. 
+//Finally, it renders the restaurant name, description, and image to the DOM.
